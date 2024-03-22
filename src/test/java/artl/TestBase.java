@@ -20,9 +20,9 @@ public class TestBase {
         Configuration.browser = webDriverConfig.getBrowser();
         Configuration.browserVersion = webDriverConfig.getBrowserVersion();
         Configuration.browserSize = webDriverConfig.getBrowserSize();
-        if (!"".equals(webDriverConfig.getRemoteWebDriver())) {
-            Configuration.remote = webDriverConfig.getRemoteWebDriver();
-        }
+        Configuration.remote = null; /*String.valueOf(webDriverConfig.getRemoteUrl());*/
+
+
         String baseUrlOfPage = System.getProperty("base.url");
         if (Objects.isNull(baseUrlOfPage)) {
             baseUrlOfPage= "https://github.com/";

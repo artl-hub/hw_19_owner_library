@@ -4,7 +4,7 @@ import org.aeonbits.owner.Config;
 
 import java.net.URL;
 
-@Config.Sources("classpath:${host}.properties")
+@Config.Sources("classpath:/*${host}*/local.properties")
 public interface WebDriverConfig extends Config {
 
     @Key("base.url")
@@ -23,10 +23,7 @@ public interface WebDriverConfig extends Config {
     @DefaultValue("1920x1080")
     String getBrowserSize();
 
-    @Key("remote.url")
+    @Key("remote.Url")
     URL getRemoteUrl();
-
-    @Key("remote.WebDriver")
-    String getRemoteWebDriver();
 
 }

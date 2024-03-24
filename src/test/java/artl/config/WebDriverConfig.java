@@ -4,12 +4,13 @@ import org.aeonbits.owner.Config;
 
 import java.net.URL;
 
-@Config.Sources("classpath:/*${host}*/local.properties")
+@Config.Sources({
+        "classpath:${env}.properties",
+        "classpath:local.properties"
+})
 public interface WebDriverConfig extends Config {
 
-    @Key("base.url")
-    @DefaultValue("https://github.com/")
-    String getBaseUrl();
+
 
     @Key("browser.name")
     @DefaultValue("CHROME")
@@ -23,7 +24,10 @@ public interface WebDriverConfig extends Config {
     @DefaultValue("1920x1080")
     String getBrowserSize();
 
-    @Key("remote.Url")
-    URL getRemoteUrl();
+    @Key("remote.url")
+    String getRemoteUrl();
+    @Key("base.url")
+    String getBaseUrl();
+
 
 }

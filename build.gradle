@@ -41,8 +41,16 @@ tasks.withType(Test) {
 
     testLogging {
         lifecycle {
-            events "started", "skipped", "failed"
+            events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
     }
+}
+
+    task git_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("git_test")
+        }
+
+
 }

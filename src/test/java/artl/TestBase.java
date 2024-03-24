@@ -9,6 +9,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Objects;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
+import static com.codeborne.selenide.Configuration.remote;
 import static com.codeborne.selenide.Selenide.open;
 
 
@@ -16,22 +18,15 @@ import static com.codeborne.selenide.Selenide.open;
 public class TestBase {
     @BeforeAll
     public static void setUp() {
-        WebDriverConfig webDriverConfig = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+        System.setProperty("env", "local");
 
+        WebDriverConfig webDriverConfig = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
         Configuration.browser = webDriverConfig.getBrowser();
         Configuration.browserVersion = webDriverConfig.getBrowserVersion();
         Configuration.browserSize = webDriverConfig.getBrowserSize();
-        Configuration.remote = /*null;*/ String.valueOf(webDriverConfig.getRemoteUrl());
+        Configuration.remote = webDriverConfig.getRemoteUrl();
         Configuration.pageLoadStrategy = "eager";
-
-
-
-
-        String baseUrlOfPage = System.getProperty("base.url");
-        if (Objects.isNull(baseUrlOfPage)) {
-            baseUrlOfPage= "https://github.com/";
-        }
-        open(baseUrlOfPage);
+        Configuration.baseUrl = webDriverConfig.getBaseUrl();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 

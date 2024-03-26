@@ -12,11 +12,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
-import java.util.Objects;
 
-import static com.codeborne.selenide.Configuration.baseUrl;
-import static com.codeborne.selenide.Configuration.remote;
-import static com.codeborne.selenide.Selenide.open;
 
 
 

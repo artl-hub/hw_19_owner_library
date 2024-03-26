@@ -2,8 +2,6 @@ package artl.config;
 
 import org.aeonbits.owner.Config;
 
-import java.net.URL;
-
 @Config.Sources({
         "classpath:${env}.properties",
         "classpath:local.properties"

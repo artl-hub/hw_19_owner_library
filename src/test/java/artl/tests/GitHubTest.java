@@ -1,8 +1,7 @@
-package artl;
+package artl.tests;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Configuration.baseUrl;
@@ -17,6 +16,7 @@ public class GitHubTest extends TestBase {
     public void GithubTitleTest() {
         open(baseUrl);
         assertThat(title()).contains("GitHub: Let’s build from here · GitHub");
+
     }
 
 }

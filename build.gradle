@@ -1,5 +1,6 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group = 'com.artl'
@@ -9,10 +10,25 @@ repositories {
     mavenCentral()
 }
 
-repositories {
-    mavenCentral()
-}
+def allureVersion = "2.26.0",
+    selenideVersion = "7.2.1",
+    junitVersion = "5.10.2",
+    ownerVersion = "1.0.4"
 
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+
+            }
+        }
+    }
+}
 
 compileJava {
     options.encoding = 'UTF-8'
@@ -24,16 +40,16 @@ compileTestJava {
 
 dependencies {
     testImplementation(
-            'com.codeborne:selenide:7.2.1',
-            'org.junit.jupiter:junit-jupiter-api:5.10.2',
-            'org.seleniumhq.selenium:selenium-java:3.141.59',
-            'io.github.bonigarcia:webdrivermanager:5.7.0',
-            'org.aeonbits.owner:owner:1.0.4',
+            "com.codeborne:selenide:$selenideVersion",
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            "org.aeonbits.owner:owner:$ownerVersion",
             'org.assertj:assertj-core:3.25.3',
-            'org.slf4j:slf4j-api:2.0.12'
+            'org.slf4j:slf4j-api:2.0.12',
     )
+
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.1')
 }
+
 
 tasks.withType(Test) {
     systemProperties(System.getProperties())
@@ -47,10 +63,10 @@ tasks.withType(Test) {
     }
 }
 
-    task git_test(type: Test) {
-        useJUnitPlatform {
-            includeTags("git_test")
-        }
+task git_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("git_test")
+    }
 
 
 }

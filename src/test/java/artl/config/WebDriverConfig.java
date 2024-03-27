@@ -2,10 +2,12 @@ package artl.config;
 
 import org.aeonbits.owner.Config;
 
+@Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
         "classpath:${env}.properties",
-        "classpath:local.properties"
+        "system:properties"
 })
+
 public interface WebDriverConfig extends Config {
 
 
@@ -24,8 +26,11 @@ public interface WebDriverConfig extends Config {
 
     @Key("remote.url")
     String getRemoteUrl();
+
     @Key("base.url")
     String getBaseUrl();
+
+
 
 
 }

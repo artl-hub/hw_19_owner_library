@@ -19,7 +19,6 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     public static void setUp() {
-        System.setProperty("env", "local");
 
         WebDriverConfig webDriverConfig = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
         Configuration.browser = webDriverConfig.getBrowser();

@@ -15,8 +15,6 @@ public class GitHubTest extends TestBase {
     @Tag("git_test")
     @DisplayName("Check title of github main page")
     public void GithubTitleTest() {
-//        open("");
-//        assertThat(title()).contains("GitHub: Let’s build from here · GitHub");
 
         step ("Open main page", () -> {
             open("");
